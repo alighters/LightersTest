@@ -18,6 +18,8 @@
         </activity>
         <activity android:name=".leak.ThreadActivity"></activity>
         <activity android:name=".leak.WeakCallbackActivity"></activity>
+        <activity android:name=".leak.StaticReferenceActivity"></activity>
+        <activity android:name=".leak.HandlerActivity"></activity>
     </application>
 
 </manifest>

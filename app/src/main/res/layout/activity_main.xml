@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:orientation="vertical"
     tools:context="com.lighters.demo.MainActivity">
 
     <TextView
@@ -27,4 +27,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/leak_weak_callback"/>
+
+    <Button
+        android:id="@+id/btn_static_reference"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/leak_static_reference"
+        />
+
+    <Button
+        android:id="@+id/btn_handler"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/leak_handler"/>
+
 </LinearLayout>

@@ -4,4 +4,6 @@
     <!-- 内存泄露Demo -->
     <string name="leak_thread">线程泄露打印</string>
     <string name="leak_weak_callback">弱引用回调</string>
+    <string name="leak_static_reference">静态引用持有</string>
+    <string name="leak_handler">handler内存泄露</string>
 </resources>

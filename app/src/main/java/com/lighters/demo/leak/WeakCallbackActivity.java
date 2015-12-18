@@ -13,7 +13,6 @@ import com.orhanobut.logger.Logger;
  */
 public class WeakCallbackActivity extends BaseActivity {
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

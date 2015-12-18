@@ -1,6 +1,7 @@
 package com.lighters.demo.leak.task;
 
 import com.lighters.demo.leak.callback.WeakCallback;
+import com.orhanobut.logger.Logger;
 
 import java.lang.ref.WeakReference;
 
@@ -9,38 +10,43 @@ import java.lang.ref.WeakReference;
  */
 public class WeakTask {
 
-    public WeakReference<WeakCallback> mCallbackWeakReference;
-
-    int i = 0;
 
     public void excute(WeakCallback callback) {
-        mCallbackWeakReference = new WeakReference<WeakCallback>(callback);
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    if (mCallbackWeakReference.get() != null) {
-                        mCallbackWeakReference.get().onStart(i + "");
-                    }
-                    while (true) {
-                        Thread.sleep(1000);
-
-                        if (mCallbackWeakReference.get() != null) {
-                            mCallbackWeakReference.get().onExcute(i + "");
-                        }
-                        i++;
-
-                        if (i >= 60) {
-                            if (mCallbackWeakReference.get() != null) {
-                                mCallbackWeakReference.get().onSucces(i + "");
-                            }
-                            return;
-                        }
-                    }
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        }).start();
+        new WeakThread(callback).start();
     }
+
+    private class WeakThread extends Thread {
+        public WeakThread(WeakCallback callback) {
+            this.call = new WeakReference<>(callback);
+        }
+
+
+        private WeakReference<WeakCallback> call;
+        private int i = 0;
+
+        @Override
+        public void run() {
+            super.run();
+            try {
+                if (call.get() != null) {
+                    call.get().onStart(i + "");
+                }
+                while (true) {
+                    Thread.sleep(1000);
+
+                    if (call.get() != null) {
+                        call.get().onExcute(i + "");
+                    } else {
+                        Logger.d("Thread内部:" + i);
+                    }
+                    i++;
+
+                }
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+
 }
