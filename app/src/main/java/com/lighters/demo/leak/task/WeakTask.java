@@ -1,6 +1,6 @@
 package com.lighters.demo.leak.task;
 
-import com.lighters.demo.leak.callback.WeakCallback;
+import com.lighters.demo.leak.callback.CallBack;
 import com.orhanobut.logger.Logger;
 
 import java.lang.ref.WeakReference;
@@ -10,24 +10,24 @@ import java.lang.ref.WeakReference;
  */
 public class WeakTask {
 
-
-    public void excute(WeakCallback callback) {
+    public void excute(CallBack callback) {
         new WeakThread(callback).start();
     }
 
-    private class WeakThread extends Thread {
-        public WeakThread(WeakCallback callback) {
+    private static class WeakThread extends Thread {
+        public WeakThread(CallBack callback) {
             this.call = new WeakReference<>(callback);
         }
 
 
-        private WeakReference<WeakCallback> call;
-        private int i = 0;
+        private WeakReference<CallBack> call;
+
 
         @Override
         public void run() {
             super.run();
             try {
+                int i = 0;
                 if (call.get() != null) {
                     call.get().onStart(i + "");
                 }
@@ -47,6 +47,4 @@ public class WeakTask {
             }
         }
     }
-
-
 }

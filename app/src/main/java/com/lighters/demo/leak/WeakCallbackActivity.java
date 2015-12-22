@@ -4,7 +4,7 @@ import android.os.Bundle;
 
 import com.lighters.demo.R;
 import com.lighters.demo.app.BaseActivity;
-import com.lighters.demo.leak.callback.WeakCallback;
+import com.lighters.demo.leak.callback.CallBack;
 import com.lighters.demo.leak.task.WeakTask;
 import com.orhanobut.logger.Logger;
 
@@ -22,7 +22,7 @@ public class WeakCallbackActivity extends BaseActivity {
 
     private void execute() {
         Logger.d("execute");
-        new WeakTask().excute(new WeakCallback() {
+        new WeakTask().excute(new CallBack() {
 
             @Override
             public void onStart(String msg) {

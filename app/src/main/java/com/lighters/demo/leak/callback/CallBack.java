@@ -3,7 +3,7 @@ package com.lighters.demo.leak.callback;
 /**
  * Created by david on 15/12/17.
  */
-public interface WeakCallback {
+public interface CallBack {
 
     void onStart(String msg);
 

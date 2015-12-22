@@ -11,6 +11,8 @@ import java.lang.ref.WeakReference;
 
 /**
  * Created by david on 15/12/18.
+ *
+ * 代码参照:http://droidyue.com/blog/2014/12/28/in-android-handler-classes-should-be-static-or-leaks-might-occur/
  */
 public class HandlerActivity extends BaseActivity {
 
