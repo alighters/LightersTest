@@ -1,9 +1,14 @@
 <resources>
     <string name="app_name">LightersTest</string>
 
+    <string name="test_leak">内存泄露测试</string>
+    <string name="test_keyboard">键盘弹起测试</string>
+
     <!-- 内存泄露Demo -->
     <string name="leak_thread">线程泄露打印</string>
     <string name="leak_weak_callback">弱引用回调</string>
     <string name="leak_static_reference">静态引用持有</string>
     <string name="leak_handler">handler内存泄露</string>
+
+
 </resources>

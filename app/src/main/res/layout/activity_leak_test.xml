@@ -11,16 +11,34 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".activity.MainActivity">
 
-    <Button
-        android:id="@+id/btn_leak_test"
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/test_leak"/>
+        android:text="Hello World!"/>
 
     <Button
-        android:id="@+id/btn_keyboard_test"
+        android:id="@+id/btn_thread"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/test_keyboard"/>
+        android:text="@string/leak_thread"/>
+
+    <Button
+        android:id="@+id/btn_weak_callback"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/leak_weak_callback"/>
+
+    <Button
+        android:id="@+id/btn_static_reference"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/leak_static_reference"
+        />
+
+    <Button
+        android:id="@+id/btn_handler"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/leak_handler"/>
 
 </LinearLayout>
