@@ -18,7 +18,7 @@
         </activity>
 
         <activity android:name=".activity.LeakTestActivity"></activity>
-        <activity android:name=".activity.KeyboardActivity" android:windowSoftInputMode="adjustResize"></activity>
+        <activity android:name=".activity.KeyboardActivity" android:windowSoftInputMode="adjustPan"></activity>
 
         <!-- 内存泄露测试 -->
         <activity android:name=".leak.ThreadActivity"></activity>

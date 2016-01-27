@@ -20,6 +20,7 @@ public class MainActivity extends BaseActivity {
         initView();
     }
 
+
     private void initView() {
         mBtnLeakTest = (Button) findViewById(R.id.btn_leak_test);
         mBtnLeakTest.setOnClickListener(new View.OnClickListener() {

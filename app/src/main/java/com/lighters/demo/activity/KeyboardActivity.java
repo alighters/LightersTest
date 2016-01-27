@@ -20,6 +20,12 @@ public class KeyboardActivity extends BaseActivity {
         setContentView(R.layout.activity_keyboard);
     }
 
+    /**
+     *  1. adjustPan 当光标被遮挡之后, 键盘才会进行弹起
+     *  2. adjustResize 任何控件获取光标之后, 键盘都会弹起
+     *  3. adjustNothing 键盘始终不会弹起
+     * @param newConfig
+     */
 
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
@@ -33,6 +39,8 @@ public class KeyboardActivity extends BaseActivity {
             Toast.makeText(this, "keyboard hidden", Toast.LENGTH_SHORT).show();
         }
     }
+
+
 
 
 
