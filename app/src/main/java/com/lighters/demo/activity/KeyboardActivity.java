@@ -3,8 +3,10 @@ package com.lighters.demo.activity;
 import android.app.Service;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 
 import com.lighters.demo.R;
@@ -22,6 +24,8 @@ public class KeyboardActivity extends BaseActivity {
        */
     SoftKeyboard softKeyboard;
 
+    private Handler mHandler;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +35,8 @@ public class KeyboardActivity extends BaseActivity {
         setKeyboardEvent();
 
         setListenerToRootView();
+
+        mHandler = new Handler();
     }
 
     /**
@@ -58,7 +64,8 @@ public class KeyboardActivity extends BaseActivity {
 
     public void setListenerToRootView() {
 //        final View activityRootView = getWindow().getDecorView().findViewById(android.R.id.content);
-//        activityRootView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+//        activityRootView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver
+// .OnGlobalLayoutListener() {
 //            @Override
 //            public void onGlobalLayout() {
 //
@@ -79,7 +86,8 @@ public class KeyboardActivity extends BaseActivity {
     }
 
     private void setKeyboardEvent() {
-        RelativeLayout mainLayout = (RelativeLayout) findViewById(R.id.main_layout); // You must use the layout root
+        final RelativeLayout mainLayout = (RelativeLayout) findViewById(R.id.main_layout); // You must use the layout
+        // root
         InputMethodManager im = (InputMethodManager) getSystemService(Service.INPUT_METHOD_SERVICE);
 
 
@@ -90,12 +98,29 @@ public class KeyboardActivity extends BaseActivity {
             public void onSoftKeyboardHide() {
                 // Code here
                 Logger.d("keyboard_hide");
+                mHandler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) mainLayout.getLayoutParams();
+                        params.bottomMargin = 0;
+                        mainLayout.setLayoutParams(params);
+                    }
+                });
             }
 
             @Override
             public void onSoftKeyboardShow() {
                 // Code here
                 Logger.d("keyboard_show");
+                mHandler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) mainLayout.getLayoutParams();
+                        params.bottomMargin = 100;
+                        mainLayout.setLayoutParams(params);
+                    }
+                });
+
 
             }
         });

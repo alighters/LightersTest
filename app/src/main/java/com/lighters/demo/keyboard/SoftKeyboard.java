@@ -69,11 +69,19 @@ public class SoftKeyboard implements View.OnFocusChangeListener {
         public void onSoftKeyboardShow();
     }
 
+    /**
+     * 获取Layout所占屏幕的高度
+     * @return
+     */
     private int getLayoutCoordinates() {
         layout.getLocationOnScreen(coords);
+//        Logger.d("location:" + ( coords[1] + layout.getHeight() ));
         return coords[1] + layout.getHeight();
     }
 
+    /**
+     * 通过设置layout为focusable, 来达到隐藏键盘的目的
+     */
     private void keyboardHideByDefault() {
         layout.setFocusable(true);
         layout.setFocusableInTouchMode(true);
